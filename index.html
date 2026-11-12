@@ -1,158 +1,328 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="MATCHA HOUSE - Descubre bebidas, recetas y combinaciones de matcha.">
-  <title>MATCHA HOUSE | Matcha Menu</title>
-  <link rel="stylesheet" href="style.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Matcha House | Premium Matcha</title>
+<style>
+:root {
+  --green:#123d2c;
+  --deep:#09291e;
+  --light:#f5f5ed;
+  --white:#fff;
+  --sage:#a9b99d;
+  --gold:#c9ad75;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:Arial,sans-serif;
+  background:var(--light);
+  color:var(--green);
+}
+header{
+  background:var(--deep);
+  color:white;
+  padding:18px 7%;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  position:sticky;top:0;z-index:10;
+}
+.logo{font-family:Georgia,serif;font-size:24px;letter-spacing:2px}
+.logo span{color:var(--gold)}
+nav{display:flex;gap:18px}
+nav a{color:white;text-decoration:none;font-size:13px}
+.hero{
+  min-height:540px;
+  background:linear-gradient(90deg,rgba(5,35,24,.94),rgba(5,35,24,.35)),
+  url('https://images.unsplash.com/photo-1515823064-d6e0c04616a7?w=1400') center/cover;
+  color:white;padding:100px 9%;
+  display:flex;align-items:center;
+}
+.hero-content{max-width:550px}
+.eyebrow{color:var(--gold);letter-spacing:4px;font-size:11px}
+h1{font-family:Georgia,serif;font-size:clamp(45px,9vw,76px);line-height:1.05;margin:22px 0}
+.hero p{line-height:1.8;color:#e5e9e3;max-width:430px}
+.btn{
+  display:inline-block;background:var(--gold);color:var(--deep);
+  padding:15px 25px;text-decoration:none;border:0;
+  font-weight:bold;cursor:pointer;margin-top:25px;
+}
+section{padding:75px 7%}
+.section-title{text-align:center;margin-bottom:38px}
+.section-title small{letter-spacing:3px;color:#8c9b7f}
+.section-title h2{font:38px Georgia,serif;margin:12px 0}
+.section-title p{color:#738071;font-size:14px}
+.menu-grid{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
+  gap:22px;
+}
+.card{background:white;overflow:hidden}
+.card img{width:100%;height:205px;object-fit:cover}
+.card-info{padding:20px}
+.card h3{font:23px Georgia,serif}
+.card p{font-size:13px;color:#788276;line-height:1.6;margin:10px 0}
+.price{font-weight:bold;color:var(--green)}
+.add{
+  width:100%;padding:12px;background:var(--green);color:white;
+  border:0;margin-top:15px;cursor:pointer;
+}
+.add:hover{background:var(--deep)}
+.custom{
+  background:var(--deep);color:white;
+}
+.custom .section-title p{color:#c4cec4}
+.custom-box{
+  background:white;color:var(--green);max-width:650px;
+  margin:auto;padding:28px;
+}
+label{display:block;font-size:13px;font-weight:bold;margin:18px 0 8px}
+select{
+  width:100%;padding:13px;border:1px solid #d9dfd4;
+  background:white;color:var(--green);
+}
+.checks{display:flex;flex-wrap:wrap;gap:14px}
+.checks label{font-weight:normal;margin:8px 0}
+.checks input{accent-color:var(--green)}
+.total{
+  margin-top:25px;padding:18px;background:var(--light);
+  display:flex;justify-content:space-between;font-size:19px;
+}
+.cart{
+  max-width:650px;margin:35px auto 0;background:white;
+  color:var(--green);padding:25px;
+}
+.cart h3{font:27px Georgia,serif;margin-bottom:15px}
+.cart-item{
+  display:flex;justify-content:space-between;gap:10px;
+  padding:12px 0;border-bottom:1px solid #e5e9e1;font-size:14px;
+}
+.remove{border:0;background:none;color:#a44;cursor:pointer}
+.cart-total{display:flex;justify-content:space-between;font-weight:bold;margin-top:20px}
+#order{
+  width:100%;background:var(--green);color:white;
+  padding:15px;border:0;margin-top:20px;cursor:pointer;
+}
+.about{
+  background:#e8ebdf;text-align:center;
+}
+.about p{max-width:620px;margin:15px auto;line-height:1.9;color:#667365}
+footer{
+  background:var(--deep);color:white;text-align:center;
+  padding:35px 15px;font-size:12px;line-height:2;
+}
+footer strong{font:24px Georgia,serif;letter-spacing:2px}
+@media(max-width:600px){
+  header{padding:15px 5%;flex-wrap:wrap;gap:12px}
+  nav{gap:12px}
+  nav a{font-size:11px}
+  .hero{min-height:480px;padding:65px 7%}
+  section{padding:60px 6%}
+}
+</style>
 </head>
-
 <body>
 
-  <header class="navbar">
-    <a href="#" class="logo">MATCHA HOUSE<span>®</span></a>
-    <nav>
-      <a href="#menu">Menú</a>
-      <a href="#personalizador">Crea tu matcha</a>
-      <a href="#about">Nosotros</a>
-    </nav>
-    <button class="favorites-button" id="favoritesButton">
-      ♡ Favoritos <span id="favoriteCount">0</span>
-    </button>
-  </header>
+<header>
+  <div class="logo">MATCHA <span>HOUSE.</span></div>
+  <nav>
+    <a href="#inicio">Inicio</a>
+    <a href="#menu">Menú</a>
+    <a href="#personalizar">Crear</a>
+    <a href="#carrito">Carrito</a>
+  </nav>
+</header>
 
-  <main>
-    <section class="hero">
-      <div class="hero-content">
-        <span class="eyebrow">YOUR DAILY MATCHA RITUAL</span>
-        <h1>Find your<br><span>perfect matcha.</span></h1>
-        <p>Una experiencia llena de sabores, combinaciones y momentos verdes.</p>
-        <a href="#menu" class="main-button">EXPLORAR MENÚ ↗</a>
-      </div>
-      <div class="hero-image">
-        <img src="https://images.unsplash.com/photo-1515823064-d6e0c04616a7?w=1000" alt="Té verde matcha">
-      </div>
-    </section>
-
-    <section class="menu-section" id="menu">
-      <div class="section-heading">
-        <span class="eyebrow">OUR COLLECTION</span>
-        <h2>Explore the menu.</h2>
-        <p>Encuentra tu próxima bebida favorita.</p>
-      </div>
-
-      <div class="filters">
-        <button class="filter active" data-category="Todos">Todos</button>
-        <button class="filter" data-category="Frutal">Frutales</button>
-        <button class="filter" data-category="Tropical">Tropicales</button>
-        <button class="filter" data-category="Cremoso">Cremosos</button>
-        <button class="filter" data-category="Especial">Especiales</button>
-      </div>
-
-      <div class="search-area">
-        <input id="searchInput" type="search" placeholder="Buscar un matcha...">
-      </div>
-
-      <div class="product-grid" id="productGrid"></div>
-    </section>
-
-    <section class="customizer" id="personalizador">
-      <div class="section-heading">
-        <span class="eyebrow">MAKE IT YOURS</span>
-        <h2>Create your matcha.</h2>
-        <p>Personaliza tu bebida a tu gusto.</p>
-      </div>
-
-      <div class="customizer-card">
-        <div class="customizer-image">
-          <img src="https://images.unsplash.com/photo-1544787219-7f47ccb76574?w=900" alt="Bebida de té">
-        </div>
-
-        <div class="customizer-options">
-          <label for="base">Base de matcha</label>
-          <select id="base">
-            <option>Matcha clásico</option>
-            <option>Strawberry Matcha</option>
-            <option>Mango Matcha</option>
-            <option>Vanilla Matcha</option>
-            <option>Coconut Matcha</option>
-            <option>Chocolate Matcha</option>
-          </select>
-
-          <label for="milk">Tipo de leche</label>
-          <select id="milk">
-            <option>Leche entera</option>
-            <option>Leche deslactosada</option>
-            <option>Leche de avena</option>
-            <option>Leche de almendra</option>
-            <option>Leche de coco</option>
-            <option>Leche de soya</option>
-          </select>
-
-          <label for="sweetness">Nivel de dulzor</label>
-          <select id="sweetness">
-            <option>Sin azúcar</option>
-            <option>Poco dulce</option>
-            <option selected>Normal</option>
-            <option>Muy dulce</option>
-          </select>
-
-          <label for="ice">Cantidad de hielo</label>
-          <select id="ice">
-            <option>Sin hielo</option>
-            <option>Poco hielo</option>
-            <option selected>Normal</option>
-            <option>Mucho hielo</option>
-          </select>
-
-          <label for="topping">Topping</label>
-          <select id="topping">
-            <option>Ninguno</option>
-            <option>Tapioca</option>
-            <option>Popping boba</option>
-            <option>Crema batida</option>
-            <option>Espuma fría</option>
-            <option>Gelatina de café</option>
-            <option>Fresas</option>
-            <option>Galleta triturada</option>
-            <option>Perlas de chocolate</option>
-          </select>
-
-          <button class="main-button full-button" id="createDrink">
-            CREAR MI MATCHA ↗
-          </button>
-
-          <div id="creationResult" class="creation-result" aria-live="polite"></div>
-        </div>
-      </div>
-    </section>
-
-    <section class="about" id="about">
-      <span class="eyebrow">A LITTLE GREEN MOMENT</span>
-      <h2>Made for matcha lovers.</h2>
-      <p>Explora nuevas mezclas, descubre sabores y encuentra la combinación que más te guste.</p>
-      <a href="#menu" class="text-link">DESCUBRIR BEBIDAS ↗</a>
-    </section>
-  </main>
-
-  <footer>
-    <a href="#" class="logo">MATCHA HOUSE®</a>
-    <p>Good things happen over matcha.</p>
-    <span>© 2026 MATCHA HOUSE</span>
-  </footer>
-
-  <!-- Ventana de detalles de cada bebida -->
-  <div class="modal" id="drinkModal" aria-hidden="true">
-    <div class="modal-content">
-      <button class="close-modal" id="closeModal" aria-label="Cerrar">×</button>
-      <div id="modalDetails"></div>
-    </div>
+<main>
+<section class="hero" id="inicio">
+  <div class="hero-content">
+    <div class="eyebrow">THE ART OF MATCHA</div>
+    <h1>Una pausa.<br>Un momento.<br>Un matcha.</h1>
+    <p>Descubre una nueva forma de disfrutar el matcha.
+    Ingredientes seleccionados, combinaciones únicas y
+    una experiencia hecha para ti.</p>
+    <a class="btn" href="#menu">DESCUBRIR MENÚ</a>
   </div>
+</section>
 
-  <script src="script.js"></script>
+<section id="menu">
+  <div class="section-title">
+    <small>OUR COLLECTION</small>
+    <h2>El menú</h2>
+    <p>Encuentra tu nueva bebida favorita.</p>
+  </div>
+  <div class="menu-grid" id="products"></div>
+</section>
+
+<section class="custom" id="personalizar">
+  <div class="section-title">
+    <small>MAKE IT YOURS</small>
+    <h2>Diseña tu matcha</h2>
+    <p>Personaliza cada detalle de tu bebida.</p>
+  </div>
+  <div class="custom-box">
+    <label for="drink">Elige tu combinación</label>
+    <select id="drink">
+      <option value="0">Matcha clásico - $65</option>
+      <option value="1">Strawberry Matcha - $85</option>
+      <option value="2">Vanilla Matcha - $80</option>
+      <option value="3">Mango Matcha - $85</option>
+      <option value="4">Chocolate Matcha - $90</option>
+      <option value="5">Coconut Matcha - $85</option>
+    </select>
+
+    <label for="milk">Tipo de leche</label>
+    <select id="milk">
+      <option value="0">Leche entera +$0</option>
+      <option value="5">Leche deslactosada +$5</option>
+      <option value="10">Leche de avena +$10</option>
+      <option value="10">Leche de almendra +$10</option>
+    </select>
+
+    <label for="sweet">Nivel de dulzor</label>
+    <select id="sweet">
+      <option>Sin azúcar</option>
+      <option selected>Normal</option>
+      <option>Extra dulce</option>
+    </select>
+
+    <label for="temperature">Temperatura</label>
+    <select id="temperature">
+      <option>Frío</option>
+      <option>Caliente</option>
+    </select>
+
+    <label>Toppings</label>
+    <div class="checks">
+      <label><input type="checkbox" class="top" value="10"> Tapioca +$10</label>
+      <label><input type="checkbox" class="top" value="8"> Crema +$8</label>
+      <label><input type="checkbox" class="top" value="10"> Fresa extra +$10</label>
+    </div>
+
+    <div class="total">
+      <strong>Total</strong>
+      <strong id="customPrice">$65 MXN</strong>
+    </div>
+    <button class="add" id="customAdd">AGREGAR AL CARRITO</button>
+  </div>
+</section>
+
+<section id="carrito">
+  <div class="section-title">
+    <small>YOUR SELECTION</small>
+    <h2>Tu carrito</h2>
+    <p>Tu próxima bebida comienza aquí.</p>
+  </div>
+  <div class="cart">
+    <h3>Mi pedido</h3>
+    <div id="cartItems">Todavía no tienes bebidas.</div>
+    <div class="cart-total">
+      <span>Total</span>
+      <span id="cartTotal">$0 MXN</span>
+    </div>
+    <button id="order">COPIAR RESUMEN DE MI PEDIDO</button>
+  </div>
+</section>
+
+<section class="about">
+  <div class="section-title">
+    <small>OUR PHILOSOPHY</small>
+    <h2>Más que una bebida.</h2>
+  </div>
+  <p>En Matcha House creemos que los pequeños momentos
+  hacen la diferencia. Por eso celebramos el sabor,
+  la creatividad y la esencia del matcha en cada preparación.</p>
+</section>
+</main>
+
+<footer>
+  <strong>MATCHA HOUSE.</strong>
+  <p>THE ART OF MATCHA</p>
+  <p>Una experiencia diferente en cada sorbo.</p>
+  <p>© 2026 Matcha House</p>
+</footer>
+
+<script>
+const drinks=[
+ {name:"Matcha Clásico",price:65,desc:"La esencia del matcha japonés con leche.",img:"https://images.unsplash.com/photo-1515823064-d6e0c04616a7?w=700"},
+ {name:"Strawberry Matcha",price:85,desc:"Matcha suave con el toque dulce de fresa.",img:"https://images.unsplash.com/photo-1556679343-c7306c1976bc?w=700"},
+ {name:"Vanilla Matcha",price:80,desc:"Una combinación cremosa y aromática.",img:"https://images.unsplash.com/photo-1544787219-7f47ccb76574?w=700"},
+ {name:"Mango Matcha",price:85,desc:"La frescura tropical del mango y matcha.",img:"https://images.unsplash.com/photo-1546173159-315724a31696?w=700"},
+ {name:"Chocolate Matcha",price:90,desc:"Dos sabores intensos en una sola bebida.",img:"https://images.unsplash.com/photo-1572490122747-3968b75cc699?w=700"},
+ {name:"Coconut Matcha",price:85,desc:"Una mezcla delicada con coco.",img:"https://images.unsplash.com/photo-1541167760496-1628856ab772?w=700"}
+];
+let cart=[];
+const money=n=>"$"+n+" MXN";
+
+document.getElementById("products").innerHTML=drinks.map((d,i)=>`
+ <article class="card">
+ <img src="${d.img}" alt="${d.name}" loading="lazy">
+ <div class="card-info">
+ <h3>${d.name}</h3><p>${d.desc}</p>
+ <div class="price">${money(d.price)}</div>
+ <button class="add" onclick="addDrink(${i})">AGREGAR</button>
+ </div></article>`).join("");
+
+function addDrink(i){
+ cart.push({name:drinks[i].name,price:drinks[i].price,details:""});
+ renderCart();
+ document.getElementById("carrito").scrollIntoView({behavior:"smooth"});
+}
+
+function customPrice(){
+ let base=drinks[+drink.value].price;
+ let milkCost=+milk.value;
+ let toppings=[...document.querySelectorAll(".top:checked")].reduce((s,x)=>s+(+x.value),0);
+ return base+milkCost+toppings;
+}
+const drink=document.getElementById("drink");
+const milk=document.getElementById("milk");
+const sweet=document.getElementById("sweet");
+const temperature=document.getElementById("temperature");
+
+function updatePrice(){
+ document.getElementById("customPrice").textContent=money(customPrice());
+}
+[drink,milk,...document.querySelectorAll(".top")].forEach(el=>el.addEventListener("change",updatePrice));
+
+document.getElementById("customAdd").addEventListener("click",()=>{
+ let toppings=[...document.querySelectorAll(".top:checked")].map(x=>x.parentElement.textContent.trim()).join(", ")||"Sin toppings";
+ cart.push({
+  name:drinks[+drink.value].name,
+  price:customPrice(),
+  details:`${milk.options[milk.selectedIndex].text}; ${sweet.value}; ${temperature.value}; ${toppings}`
+ });
+ renderCart();
+ document.getElementById("carrito").scrollIntoView({behavior:"smooth"});
+});
+
+function renderCart(){
+ const box=document.getElementById("cartItems");
+ if(!cart.length){box.textContent="Todavía no tienes bebidas.";}
+ else{
+ box.innerHTML=cart.map((item,i)=>`
+ <div class="cart-item">
+ <div><strong>${item.name}</strong><br><small>${item.details}</small><br>${money(item.price)}</div>
+ <button class="remove" onclick="removeDrink(${i})">Quitar</button>
+ </div>`).join("");
+ }
+ document.getElementById("cartTotal").textContent=money(cart.reduce((s,x)=>s+x.price,0));
+}
+function removeDrink(i){cart.splice(i,1);renderCart();}
+
+document.getElementById("order").addEventListener("click",async()=>{
+ if(!cart.length){alert("Agrega una bebida primero.");return;}
+ let summary="MATCHA HOUSE - MI PEDIDO\n"+
+ cart.map(x=>x.name+" - "+money(x.price)+"\n"+x.details).join("\n\n")+
+ "\n\nTOTAL: "+money(cart.reduce((s,x)=>s+x.price,0));
+ try{
+ await navigator.clipboard.writeText(summary);
+ alert("¡Pedido copiado! Ya puedes compartirlo.");
+ }catch(e){alert(summary);}
+});
+updatePrice();
+</script>
 </body>
 </html>
