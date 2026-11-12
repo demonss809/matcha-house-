@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="MATCHA HOUSE - Descubre bebidas, recetas y combinaciones de matcha.">
+  <title>MATCHA HOUSE | Matcha Menu</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+  <header class="navbar">
+    <a href="#" class="logo">MATCHA HOUSE<span>®</span></a>
+    <nav>
+      <a href="#menu">Menú</a>
+      <a href="#personalizador">Crea tu matcha</a>
+      <a href="#about">Nosotros</a>
+    </nav>
+    <button class="favorites-button" id="favoritesButton">
+      ♡ Favoritos <span id="favoriteCount">0</span>
+    </button>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-content">
+        <span class="eyebrow">YOUR DAILY MATCHA RITUAL</span>
+        <h1>Find your<br><span>perfect matcha.</span></h1>
+        <p>Una experiencia llena de sabores, combinaciones y momentos verdes.</p>
+        <a href="#menu" class="main-button">EXPLORAR MENÚ ↗</a>
+      </div>
+      <div class="hero-image">
+        <img src="https://images.unsplash.com/photo-1515823064-d6e0c04616a7?w=1000" alt="Té verde matcha">
+      </div>
+    </section>
+
+    <section class="menu-section" id="menu">
+      <div class="section-heading">
+        <span class="eyebrow">OUR COLLECTION</span>
+        <h2>Explore the menu.</h2>
+        <p>Encuentra tu próxima bebida favorita.</p>
+      </div>
+
+      <div class="filters">
+        <button class="filter active" data-category="Todos">Todos</button>
+        <button class="filter" data-category="Frutal">Frutales</button>
+        <button class="filter" data-category="Tropical">Tropicales</button>
+        <button class="filter" data-category="Cremoso">Cremosos</button>
+        <button class="filter" data-category="Especial">Especiales</button>
+      </div>
+
+      <div class="search-area">
+        <input id="searchInput" type="search" placeholder="Buscar un matcha...">
+      </div>
+
+      <div class="product-grid" id="productGrid"></div>
+    </section>
+
+    <section class="customizer" id="personalizador">
+      <div class="section-heading">
+        <span class="eyebrow">MAKE IT YOURS</span>
+        <h2>Create your matcha.</h2>
+        <p>Personaliza tu bebida a tu gusto.</p>
+      </div>
+
+      <div class="customizer-card">
+        <div class="customizer-image">
+          <img src="https://images.unsplash.com/photo-1544787219-7f47ccb76574?w=900" alt="Bebida de té">
+        </div>
+
+        <div class="customizer-options">
+          <label for="base">Base de matcha</label>
+          <select id="base">
+            <option>Matcha clásico</option>
+            <option>Strawberry Matcha</option>
+            <option>Mango Matcha</option>
+            <option>Vanilla Matcha</option>
+            <option>Coconut Matcha</option>
+            <option>Chocolate Matcha</option>
+          </select>
+
+          <label for="milk">Tipo de leche</label>
+          <select id="milk">
+            <option>Leche entera</option>
+            <option>Leche deslactosada</option>
+            <option>Leche de avena</option>
+            <option>Leche de almendra</option>
+            <option>Leche de coco</option>
+            <option>Leche de soya</option>
+          </select>
+
+          <label for="sweetness">Nivel de dulzor</label>
+          <select id="sweetness">
+            <option>Sin azúcar</option>
+            <option>Poco dulce</option>
+            <option selected>Normal</option>
+            <option>Muy dulce</option>
+          </select>
+
+          <label for="ice">Cantidad de hielo</label>
+          <select id="ice">
+            <option>Sin hielo</option>
+            <option>Poco hielo</option>
+            <option selected>Normal</option>
+            <option>Mucho hielo</option>
+          </select>
+
+          <label for="topping">Topping</label>
+          <select id="topping">
+            <option>Ninguno</option>
+            <option>Tapioca</option>
+            <option>Popping boba</option>
+            <option>Crema batida</option>
+            <option>Espuma fría</option>
+            <option>Gelatina de café</option>
+            <option>Fresas</option>
+            <option>Galleta triturada</option>
+            <option>Perlas de chocolate</option>
+          </select>
+
+          <button class="main-button full-button" id="createDrink">
+            CREAR MI MATCHA ↗
+          </button>
+
+          <div id="creationResult" class="creation-result" aria-live="polite"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="about" id="about">
+      <span class="eyebrow">A LITTLE GREEN MOMENT</span>
+      <h2>Made for matcha lovers.</h2>
+      <p>Explora nuevas mezclas, descubre sabores y encuentra la combinación que más te guste.</p>
+      <a href="#menu" class="text-link">DESCUBRIR BEBIDAS ↗</a>
+    </section>
+  </main>
+
+  <footer>
+    <a href="#" class="logo">MATCHA HOUSE®</a>
+    <p>Good things happen over matcha.</p>
+    <span>© 2026 MATCHA HOUSE</span>
+  </footer>
+
+  <!-- Ventana de detalles de cada bebida -->
+  <div class="modal" id="drinkModal" aria-hidden="true">
+    <div class="modal-content">
+      <button class="close-modal" id="closeModal" aria-label="Cerrar">×</button>
+      <div id="modalDetails"></div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
